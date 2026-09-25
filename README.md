@@ -2,9 +2,9 @@
 
 # GroundingJev
 
-**Non-autoregressive Visual Grounding with Qwen3.5-0.8B**
+**Jev-inspired Non-autoregressive Visual Grounding**
 
-ModelScope ms-swift · EvalScope · Docker
+Qwen3.5-0.8B · ModelScope ms-swift · EvalScope · Docker
 
 [English](README.md) · [简体中文](README_zh.md) · [Model card](MODEL_CARD.md) · [Evaluation](evaluation/README.md)
 
@@ -13,6 +13,8 @@ ModelScope ms-swift · EvalScope · Docker
 ![GroundingJev architecture](assets/architecture.svg)
 
 ## Introduction
+
+Inspired by [TypeSafe Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev), GroundingJev applies direct, task-specific output prediction to visual grounding.
 
 GroundingJev replaces autoregressive coordinate decoding with continuous bounding-box regression on the Qwen3.5-0.8B multimodal backbone. A lightweight MLP head maps the last valid token's hidden state to normalized `cxcywh` coordinates in a single forward pass.
 

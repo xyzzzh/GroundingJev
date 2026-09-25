@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "groundingjev"
 version = "0.1.0"
-description = "Non-autoregressive visual grounding with Qwen3.5-0.8B"
+description = "Jev-inspired non-autoregressive visual grounding with Qwen3.5-0.8B"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 license = "Apache-2.0"

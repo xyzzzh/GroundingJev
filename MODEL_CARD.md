@@ -12,9 +12,9 @@ license: apache-2.0
 
 # GroundingJev model card / 模型卡
 
-GroundingJev adapts Qwen3.5-0.8B for non-autoregressive visual grounding. A continuous regression head maps the last valid token's multimodal representation to normalized `(cx, cy, width, height)`, replacing autoregressive coordinate decoding.
+Inspired by [TypeSafe Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) and its direct, task-specific outputs, GroundingJev adapts Qwen3.5-0.8B for non-autoregressive visual grounding. A continuous regression head maps the last valid token's multimodal representation to normalized `(cx, cy, width, height)`, replacing autoregressive coordinate decoding.
 
-GroundingJev 基于 Qwen3.5-0.8B 实现非自回归 Visual Grounding，利用连续坐标回归头，将最后一个有效 token 的多模态表征映射为归一化的 `(cx, cy, width, height)`，替代自回归坐标解码。
+GroundingJev 受 [TypeSafe Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) 直接输出结构化结果的思路启发，基于 Qwen3.5-0.8B 实现非自回归 Visual Grounding，利用连续坐标回归头，将最后一个有效 token 的多模态表征映射为归一化的 `(cx, cy, width, height)`，替代自回归坐标解码。
 
 - **Base model / 基础模型**: Qwen3.5-0.8B
 - **Training / 训练**: ModelScope ms-swift

@@ -2,9 +2,9 @@
 
 # GroundingJev
 
-**基于 Qwen3.5-0.8B 的非自回归 Visual Grounding**
+**受 Jev 启发的非自回归 Visual Grounding**
 
-ModelScope ms-swift · EvalScope · Docker
+Qwen3.5-0.8B · ModelScope ms-swift · EvalScope · Docker
 
 [English](README.md) · [简体中文](README_zh.md) · [模型卡](MODEL_CARD.md) · [评估结果](evaluation/README.md)
 
@@ -13,6 +13,8 @@ ModelScope ms-swift · EvalScope · Docker
 ![GroundingJev 架构](assets/architecture.svg)
 
 ## 项目介绍
+
+GroundingJev 受 [TypeSafe Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) 直接输出结构化结果的思路启发，将这一思路用于 Visual Grounding 中的连续坐标预测。
 
 GroundingJev 在 Qwen3.5-0.8B 多模态主干上，以连续边界框回归替代自回归坐标解码。轻量 MLP 回归头读取最后一个有效 token 的隐藏状态，通过单次前向输出归一化 `cxcywh` 坐标。
 
