@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "description": "Exact annotation identities used for the documented experiments. Annotations and COCO images are supplied separately; this manifest contains no examples from the datasets.",
+  "normalization": "scripts/prepare_data.py: one absolute container image path, UTF-8 JSON lines, original targets and expressions unchanged.",
+  "files": [
+    {
+      "file": "refcoco_80k_train.jsonl",
+      "samples": 80000,
+      "source_sha256": "ec05689e90df690716ad6039bf57a4675722f1a71121cb4a861ac6c4e4200b10",
+      "prepared_sha256": "ec05689e90df690716ad6039bf57a4675722f1a71121cb4a861ac6c4e4200b10"
+    },
+    {
+      "file": "refcoco_testA_eval.jsonl",
+      "samples": 5657,
+      "source_sha256": "3bcd19ba7fca7c48caf3c6685e8b4c57dceea188ead927f8ecfe35bf736cf864",
+      "prepared_sha256": "3bcd19ba7fca7c48caf3c6685e8b4c57dceea188ead927f8ecfe35bf736cf864"
+    },
+    {
+      "file": "refcoco_testB_eval.jsonl",
+      "samples": 5095,
+      "source_sha256": "3b96bc9758cea495336569851fb3a443fab298d003b1faf4a8043ccd7b8268fa",
+      "prepared_sha256": "3b96bc9758cea495336569851fb3a443fab298d003b1faf4a8043ccd7b8268fa"
+    },
+    {
+      "file": "refcocop_testA_eval.jsonl",
+      "samples": 5726,
+      "source_sha256": "01d63aa73cc4bf06289cf6dbfc1d1ed6a06f4346bec56bc1f566b3ce85f83a61",
+      "prepared_sha256": "01d63aa73cc4bf06289cf6dbfc1d1ed6a06f4346bec56bc1f566b3ce85f83a61"
+    },
+    {
+      "file": "refcocop_testB_eval.jsonl",
+      "samples": 4889,
+      "source_sha256": "0174d4974110e6735d8a57140a55fa3a069f27064518d90aa090eb962992adbe",
+      "prepared_sha256": "0174d4974110e6735d8a57140a55fa3a069f27064518d90aa090eb962992adbe"
+    },
+    {
+      "file": "refcocog_test_eval.jsonl",
+      "samples": 9602,
+      "source_sha256": "ec2ad746b4ccbd97f7a6ca86ec025c44be97aa635307c9714a2ebd082d564ebd",
+      "prepared_sha256": "ec2ad746b4ccbd97f7a6ca86ec025c44be97aa635307c9714a2ebd082d564ebd"
+    }
+  ]
+}

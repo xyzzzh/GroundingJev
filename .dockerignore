@@ -1,0 +1,6 @@
+*
+!docker/
+!docker/Dockerfile
+!docker/requirements.lock
+!scripts/
+!scripts/check_environment.py

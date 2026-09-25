@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "groundingjev"
+version = "0.1.0"
+description = "Continuous referring-expression grounding with Qwen3.5"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "Apache-2.0"
+dependencies = [
+  "torch==2.10.0", "torchvision==0.25.0", "transformers==5.9.0",
+  "ms-swift==4.3.2", "evalscope==1.12.0", "modelscope[datasets]==1.37.0",
+  "Pillow==11.3.0", "swanlab==0.10.1",
+]
+
+[project.optional-dependencies]
+docs = ["matplotlib==3.11.2"]
+
+[project.urls]
+Repository = "https://github.com/xyzzzh/GroundingJev"
+Model = "https://huggingface.co/xyzzzh/GroundingJev"
+Demo = "https://huggingface.co/spaces/xyzzzh/GroundingJev"
+
+[tool.setuptools.packages.find]
+include = ["groundingjev*"]
+
+[tool.setuptools.data-files]
+"share/groundingjev/configs/train" = ["configs/train/groundingjev.json"]

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "training": {
+    "model": "/models/Qwen3.5-0.8B",
+    "train_jsonl": "/workspace/datasets/RefCOCO/annotations/refcoco_80k_train.jsonl",
+    "stage": "all",
+    "microbatch": 2,
+    "effective_batch_size": 96,
+    "head_steps": 100,
+    "joint_epochs": 2.0,
+    "max_steps": -1,
+    "expected_samples": 80000,
+    "max_pixels": 262144,
+    "max_length": 2048,
+    "workers": 2,
+    "save_steps": 250,
+    "logging_steps": 1,
+    "seed": 42,
+    "use_cpu": false,
+    "output_dir": "/outputs/groundingjev",
+    "swanlab": false,
+    "run_name": "GroundingJev"
+  },
+  "recipe": {
+    "head_learning_rate": 0.0005,
+    "joint_learning_rates": {
+      "language": 1e-05,
+      "merger": 1e-05,
+      "head": 0.0001
+    },
+    "head_scheduler": "cosine",
+    "joint_scheduler": "cosine",
+    "joint_warmup_ratio": 0.05,
+    "weight_decay": 0.01,
+    "max_grad_norm": 1.0,
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_epsilon": 1e-08,
+    "schema_version": 1,
+    "name": "groundingjev",
+    "head_warmup_steps": 10
+  }
+}

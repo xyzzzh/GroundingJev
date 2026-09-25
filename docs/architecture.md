@@ -1,0 +1,29 @@
+# Architecture / 模型结构
+
+GroundingJev predicts a box from an image and a referring expression in one forward pass.
+
+GroundingJev 根据图像与目标描述，通过一次前向预测边界框。
+
+```text
+Image + expression / 图像 + 描述
+    → Qwen3.5-0.8B
+    → Last valid token / 最后一个有效 token
+    → LayerNorm → Linear → GELU → Linear → Sigmoid
+    → [cx, cy, width, height]
+```
+
+The regression head has a hidden width of 512. Predictions are converted to original-image `xyxy` coordinates. Training combines L1 regression and generalized IoU loss:
+
+回归头的隐藏维度为 512，预测结果转换为原图 `xyxy` 坐标。训练结合 L1 回归与广义 IoU 损失：
+
+```text
+loss = 5 × L1 + 2 × (1 − GIoU)
+```
+
+Training first adapts the box head, then jointly trains the language backbone, visual merger, and head. The remaining visual encoder parameters stay frozen.
+
+训练先适配定位头，再联合训练语言主干、视觉融合层与定位头，其余视觉编码器参数保持冻结。
+
+See [training](training.md) and [evaluation](evaluation.md).
+
+操作方法见[训练](training.md)与[评估](evaluation.md)。
