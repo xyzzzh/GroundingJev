@@ -61,8 +61,6 @@ Requested batch: Qwen3.5-0.8B=1, GroundingJev=1
 
 ![Quality and evaluation results](assets/figures/evaluation-results.svg)
 
-[PDF](assets/figures/evaluation-results.pdf) · [300 dpi PNG](assets/figures/evaluation-results.png) · [Figure source values](evaluation/figure-source-values.csv)
-
 IoU@0.5 is the percentage of expressions with a predicted-box IoU of at least 0.5. See [all results](evaluation/README.md) and [metric definitions](docs/evaluation.md).
 
 ## Quick start

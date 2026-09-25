@@ -61,8 +61,6 @@ RefCOCO 与 RefCOCO+ 按全部样本合并 testA、testB；RefCOCOg 使用 test�
 
 ![质量与评估结果](assets/figures/evaluation-results.svg)
 
-[PDF](assets/figures/evaluation-results.pdf) · [300 dpi PNG](assets/figures/evaluation-results.png) · [图中原始数值](evaluation/figure-source-values.csv)
-
 IoU@0.5 表示预测框 IoU 不低于 0.5 的描述比例。详见[完整结果](evaluation/README.md)与[指标说明](docs/evaluation.md)。
 
 ## 快速开始
