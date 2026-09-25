@@ -46,17 +46,17 @@ def ground(image_path, expression):
 with gr.Blocks(title="GroundingJev", css=".gradio-container {max-width: 1100px !important}") as app:
     gr.Markdown(
         "# GroundingJev\n"
-        "Upload an image and describe one object in English to locate it. "
+        "Non-autoregressive visual grounding with Qwen3.5-0.8B. "
         "[Model](https://huggingface.co/xyzzzh/GroundingJev)"
     )
     with gr.Row():
         with gr.Column():
             image = gr.Image(label="Image", type="filepath", sources=["upload"], height=420)
             expression = gr.Textbox(
-                label="Object description", placeholder="the person on the left",
+                label="Referring expression (English)", placeholder="the person on the left",
                 max_lines=3,
             )
-            run = gr.Button("Locate object", variant="primary")
+            run = gr.Button("Run inference", variant="primary")
         with gr.Column():
             result = gr.Image(label="Predicted bounding box", type="pil", height=420)
     run.click(ground, inputs=[image, expression], outputs=result, api_name="ground")

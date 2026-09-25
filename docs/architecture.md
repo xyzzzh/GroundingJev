@@ -1,15 +1,15 @@
 # Architecture / 模型结构
 
-GroundingJev predicts a box from an image and a referring expression in one forward pass.
+GroundingJev uses the Qwen3.5-0.8B multimodal backbone with a continuous coordinate-regression head. The last valid token's hidden state provides the joint image–expression representation; the head predicts normalized box coordinates without autoregressive coordinate decoding.
 
-GroundingJev 根据图像与目标描述，通过一次前向预测边界框。
+GroundingJev 在 Qwen3.5-0.8B 多模态主干上接入连续坐标回归头，以最后一个有效 token 的隐藏状态作为图像与表达的联合表征，直接回归归一化边界框坐标，无需自回归坐标解码。
 
 ```text
 Image + expression / 图像 + 描述
     → Qwen3.5-0.8B
     → Last valid token / 最后一个有效 token
     → LayerNorm → Linear → GELU → Linear → Sigmoid
-    → [cx, cy, width, height]
+    → Normalized [cx, cy, width, height] / 归一化坐标
 ```
 
 The regression head has a hidden width of 512. Predictions are converted to original-image `xyxy` coordinates. Training combines L1 regression and generalized IoU loss:

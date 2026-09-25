@@ -1,5 +1,9 @@
 # Training / 训练
 
+The two-stage recipe adapts the regression head for 100 steps, then jointly fine-tunes the language backbone, visual merger, and head for two epochs on 80,000 RefCOCO examples. The remaining visual encoder parameters stay frozen. Both stages use cosine learning-rate decay with warmup and the objective `5 × L1 + 2 × (1 − GIoU)`.
+
+训练采用两阶段方案：先训练回归头 100 步，再基于 80,000 条 RefCOCO 样本，联合微调语言主干、视觉 merger 与回归头两个 epoch，其余视觉编码器参数保持冻结。两个阶段均采用 warmup 与 cosine 学习率衰减，优化目标为 `5 × L1 + 2 × (1 − GIoU)`。
+
 Complete [setup](setup.md) and [data preparation](data.md), then run:
 
 完成[环境配置](setup.md)与[数据准备](data.md)后，执行：

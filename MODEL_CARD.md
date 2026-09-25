@@ -12,14 +12,15 @@ license: apache-2.0
 
 # GroundingJev model card / 模型卡
 
-GroundingJev predicts a bounding box from an image and an English referring expression. It uses the Qwen3.5-0.8B multimodal backbone and a regression head, producing coordinates in one forward pass.
+GroundingJev adapts Qwen3.5-0.8B for non-autoregressive visual grounding. A continuous regression head maps the last valid token's multimodal representation to normalized `(cx, cy, width, height)`, replacing autoregressive coordinate decoding.
 
-GroundingJev 根据图像与英文目标描述预测边界框，使用 Qwen3.5-0.8B 多模态主干与回归头，一次前向即可输出坐标。
+GroundingJev 基于 Qwen3.5-0.8B 实现非自回归 Visual Grounding，利用连续坐标回归头，将最后一个有效 token 的多模态表征映射为归一化的 `(cx, cy, width, height)`，替代自回归坐标解码。
 
 - **Base model / 基础模型**: Qwen3.5-0.8B
 - **Training / 训练**: ModelScope ms-swift
 - **Evaluation / 评估**: ModelScope EvalScope
 - **Training annotations / 训练标注**: `refcoco_80k_train.jsonl`
+- **Objective / 训练目标**: `5 × L1 + 2 × (1 − GIoU)`
 - **Output / 输出**: Original-image `xyxy` box / 原图 `xyxy` 边界框
 - **Model weights / 模型权重**: [xyzzzh/GroundingJev](https://huggingface.co/xyzzzh/GroundingJev)
 
@@ -50,9 +51,9 @@ Inference performance results are available.
 
 ## Scope / 适用范围
 
-The model supports referring-expression grounding and returns a box for the described object. It does not produce segmentation masks or multiple-object detections. Results on other languages and domains require separate evaluation.
+Evaluation covers English referring expressions on RefCOCO, RefCOCO+, and RefCOCOg. The output is a single bounding box; segmentation, multi-object detection, and transfer to other languages or domains have not been evaluated.
 
-模型用于根据描述定位目标，返回对应边界框，不提供分割掩码或多目标检测。其他语言和领域的效果需另行评估。
+评测覆盖 RefCOCO、RefCOCO+ 和 RefCOCOg 的英文 referring expressions。模型输出单个边界框，尚未评测分割、多目标检测及跨语言、跨领域迁移。
 
 ## License and acknowledgments / 许可证与致谢
 

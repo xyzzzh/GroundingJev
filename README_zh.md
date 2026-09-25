@@ -2,9 +2,9 @@
 
 # GroundingJev
 
-**描述一个物体，一次前向预测它的位置。**
+**基于 Qwen3.5-0.8B 的非自回归 Visual Grounding**
 
-Qwen3.5-0.8B 视觉定位 · ModelScope · Docker
+ModelScope ms-swift · EvalScope · Docker
 
 [English](README.md) · [简体中文](README_zh.md) · [模型卡](MODEL_CARD.md) · [评估结果](evaluation/README.md)
 
@@ -14,7 +14,9 @@ Qwen3.5-0.8B 视觉定位 · ModelScope · Docker
 
 ## 项目介绍
 
-GroundingJev 接收图像和目标描述，输出一个边界框。模型结合 Qwen3.5-0.8B 多模态主干与回归头，通过一次前向预测四个坐标，无需逐 token 解码坐标。
+GroundingJev 在 Qwen3.5-0.8B 多模态主干上，以连续边界框回归替代自回归坐标解码。轻量 MLP 回归头读取最后一个有效 token 的隐藏状态，通过单次前向输出归一化 `cxcywh` 坐标。
+
+训练采用加权 L1 与 GIoU 损失，先适配回归头，再联合优化语言主干、视觉 merger 与回归头；视觉编码器的其余参数保持冻结。
 
 训练使用 ModelScope **ms-swift**，评估使用 **EvalScope**，环境运行在 **Docker** 中。可选接入 **SwanLab** 记录训练进度。详见[架构说明](docs/architecture.md)。
 
@@ -61,7 +63,7 @@ RefCOCO 与 RefCOCO+ 按全部样本合并 testA、testB；RefCOCOg 使用 test�
 
 ![质量与评估结果](assets/figures/evaluation-results.svg)
 
-IoU@0.5 表示预测框 IoU 不低于 0.5 的描述比例。详见[完整结果](evaluation/README.md)与[指标说明](docs/evaluation.md)。
+各测试划分的结果见[完整结果](evaluation/README.md)，评测设置见[评估说明](docs/evaluation.md)。
 
 ## 快速开始
 

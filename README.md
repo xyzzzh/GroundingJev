@@ -2,9 +2,9 @@
 
 # GroundingJev
 
-**Describe an object. Predict its box in one forward pass.**
+**Non-autoregressive Visual Grounding with Qwen3.5-0.8B**
 
-Visual grounding with Qwen3.5-0.8B · ModelScope · Docker
+ModelScope ms-swift · EvalScope · Docker
 
 [English](README.md) · [简体中文](README_zh.md) · [Model card](MODEL_CARD.md) · [Evaluation](evaluation/README.md)
 
@@ -14,7 +14,9 @@ Visual grounding with Qwen3.5-0.8B · ModelScope · Docker
 
 ## Introduction
 
-GroundingJev predicts a bounding box from an image and a referring expression. It combines the Qwen3.5-0.8B multimodal backbone with a regression head to predict four coordinates in one forward pass, without autoregressive coordinate decoding.
+GroundingJev replaces autoregressive coordinate decoding with continuous bounding-box regression on the Qwen3.5-0.8B multimodal backbone. A lightweight MLP head maps the last valid token's hidden state to normalized `cxcywh` coordinates in a single forward pass.
+
+Training minimizes a weighted L1 and GIoU loss. Head adaptation is followed by joint optimization of the language backbone, visual merger, and regression head; the remaining visual encoder parameters stay frozen.
 
 Training uses ModelScope **ms-swift**, evaluation uses **EvalScope**, and the environment runs in **Docker**. Optional **SwanLab** logging tracks training progress. See [architecture](docs/architecture.md).
 
@@ -61,7 +63,7 @@ Requested batch: Qwen3.5-0.8B=1, GroundingJev=1
 
 ![Quality and evaluation results](assets/figures/evaluation-results.svg)
 
-IoU@0.5 is the percentage of expressions with a predicted-box IoU of at least 0.5. See [all results](evaluation/README.md) and [metric definitions](docs/evaluation.md).
+See [per-split results](evaluation/README.md) and the [evaluation protocol](docs/evaluation.md).
 
 ## Quick start
 

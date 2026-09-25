@@ -11,12 +11,12 @@ pinned: false
 license: apache-2.0
 models:
   - xyzzzh/GroundingJev
-short_description: Locate an object using an image and a referring expression.
+short_description: Non-autoregressive visual grounding with Qwen3.5-0.8B.
 ---
 
 # GroundingJev demo
 
-Upload an image and describe one object in English. GroundingJev returns the image with a predicted bounding box.
+Non-autoregressive visual grounding with Qwen3.5-0.8B and a continuous coordinate-regression head. The demo accepts an image and an English referring expression, and visualizes the predicted box.
 
 Model: [xyzzzh/GroundingJev](https://huggingface.co/xyzzzh/GroundingJev).
 
